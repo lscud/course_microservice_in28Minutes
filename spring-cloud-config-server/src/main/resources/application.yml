@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: spring-cloud-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:///C:/temp/IntelliJ_Projects/Curso_microservico_in28Minutes/git-localconfig-repo
+server:
+  port: '8888'

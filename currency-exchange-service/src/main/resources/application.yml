@@ -1,0 +1,15 @@
+spring:
+  config:
+    import: optional:configserver:http://localhost:8888
+  application:
+    name: currency-exchange
+  jpa:
+    show-sql: true
+    defer-datasource-initialization: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+  h2:
+    console:
+      enabled: true
+server:
+  port: '8000'
