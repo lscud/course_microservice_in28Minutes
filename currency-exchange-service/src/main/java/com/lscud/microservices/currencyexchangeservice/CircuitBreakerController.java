@@ -16,7 +16,7 @@ public class CircuitBreakerController {
     private Logger logger = LoggerFactory.getLogger(CircuitBreakerController.class);
     @GetMapping("/sample-api")
 //    @Retry(name = "sample-api", fallbackMethod = "hardcodeResponse")
-    @CircuitBreaker(name = "default", fallbackMethod = "hardcodeResponse")
+//    @CircuitBreaker(name = "default", fallbackMethod = "hardcodeResponse")
     @RateLimiter(name="default")
     //10s => 10000 calls to the sample api
     public String sampleApi(){
