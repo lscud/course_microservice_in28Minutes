@@ -1,5 +1,6 @@
 package com.lscud.microservices.currencyexchangeservice;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +14,8 @@ public class CircuitBreakerController {
 
     private Logger logger = LoggerFactory.getLogger(CircuitBreakerController.class);
     @GetMapping("/sample-api")
-    @Retry(name = "sample-api", fallbackMethod = "hardcodeResponse")
+//    @Retry(name = "sample-api", fallbackMethod = "hardcodeResponse")
+    @CircuitBreaker(name = "default", fallbackMethod = "hardcodeResponse")
     public String sampleApi(){
         logger.info("Sample Api call received");
         // Simulando um microserviço que está fora (Down)
