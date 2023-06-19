@@ -26,7 +26,13 @@ resilience4j:
         maxAttempts: 5
         waitDuration: 1s
         enableExponentialBackoff: true
-  circuitbreaker:
+#  circuitbreaker:
+#    instances:
+#      default:
+#        failureRateThreshold: 90 #Se 90% das requisições falharem então mude o circuit breaker para aberto (Não manda requisição apenas a mensagem ou comportamento fallback direto)
+  ratelimiter:
     instances:
       default:
-        failureRateThreshold: 90 #Se 90% das requisições falharem então mude o circuit breaker para aberto (Não manda requisição apenas a mensagem ou comportamento fallback direto)
+#        2 request em 10s
+        limitForPeriod: 2
+        limitRefreshPeriod: 10s
