@@ -36,3 +36,7 @@ resilience4j:
 #        2 request em 10s
         limitForPeriod: 2
         limitRefreshPeriod: 10s
+  bulkhead:
+    instances:
+      default:
+        maxConcurrentCalls: 10

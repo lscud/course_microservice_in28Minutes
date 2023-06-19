@@ -1,5 +1,6 @@
 package com.lscud.microservices.currencyexchangeservice;
 
+import io.github.resilience4j.bulkhead.annotation.Bulkhead;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 import io.github.resilience4j.retry.annotation.Retry;
@@ -17,7 +18,8 @@ public class CircuitBreakerController {
     @GetMapping("/sample-api")
 //    @Retry(name = "sample-api", fallbackMethod = "hardcodeResponse")
 //    @CircuitBreaker(name = "default", fallbackMethod = "hardcodeResponse")
-    @RateLimiter(name="default")
+//    @RateLimiter(name="default")
+    @Bulkhead(name="defualt")
     //10s => 10000 calls to the sample api
     public String sampleApi(){
         logger.info("Sample Api call received");
