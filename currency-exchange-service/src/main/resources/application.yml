@@ -11,6 +11,7 @@ spring:
   h2:
     console:
       enabled: true
+
 server:
   port: 8000
 
@@ -40,3 +41,10 @@ resilience4j:
     instances:
       default:
         maxConcurrentCalls: 10
+management:
+  tracing:
+    sampling:
+      probability: 1.0 #every request
+logging:
+  pattern:
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}] '
